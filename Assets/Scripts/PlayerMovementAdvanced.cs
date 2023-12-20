@@ -30,10 +30,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    [Header("Gliding")]
-    public float glideDrag = 2.5f;
-    public float timeInAirBeforeGliding = 0.25f;
-    public float distanceToGroundToDeploy = 7f;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -55,9 +51,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
-    private float timeInAir;
-    private bool gliderDeployed;
-    private float initialDrag;
 
 
     public Transform orientation;
@@ -93,7 +86,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = true;
-        initialDrag = rb.drag;
 
         startYScale = transform.localScale.y;
     }
@@ -114,14 +106,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
         else
             {
             rb.drag = 0;
-            timeInAir += Time.deltaTime;
             }
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
-        if (!grounded) HandleAir();
     }
 
     private void MyInput()
@@ -306,7 +296,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        timeInAir = 0f;
     }
     private void ResetJump()
     {
@@ -348,28 +337,5 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
-    }
-    private void HandleAir()
-    {
-        if (gliderDeployed && grounded) RetractGlider();
-        else if (!grounded && CanDeploy()) DeployGlider();
-    }
-    private void DeployGlider()
-    {
-        gliderDeployed = true;
-        rb.drag = glideDrag;
-    }
-    private void RetractGlider()
-    {
-        gliderDeployed = false;
-        rb.drag = initialDrag;
-    }
-    private bool CanDeploy()
-    {
-        if(timeInAir >= timeInAirBeforeGliding) {
-            RaycastHit hit;
-            return !Physics.Raycast(transform.position, Vector3.down, out hit, distanceToGroundToDeploy, whatIsGround);
-        }
-        else return false;
     }
 }
