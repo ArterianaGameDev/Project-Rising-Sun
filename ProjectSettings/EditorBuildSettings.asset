@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameDevLab.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Game Tutorial.unity
+    path: Assets/Scenes/Game Tutorial.unity
     guid: 72c727c1dcf574fc6887a0c2747f9462
   m_configObjects: {}
