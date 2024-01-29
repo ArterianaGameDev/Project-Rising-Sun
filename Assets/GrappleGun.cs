@@ -11,16 +11,27 @@ public class GrappleGun : MonoBehaviour
     private float maxDistance = 100f;
     private SpringJoint joint;
     private Vector3 currentGrapplePosition;
+
+    public GameObject bullet;
+    public float bulletSpeed = 10;
+
+
+
+
     private void Awake() {
         lr = GetComponent<LineRenderer>();
     }
     private void Update() {
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(1)) {
             StartGrapple();
         }
-        else if(Input.GetMouseButtonUp(0)) {
+        else if(Input.GetMouseButtonUp(1)) {
             StopGrapple();
         }
+        else if(Input.GetMouseButtonDown(0)) {
+            FireBullet();
+        }
+
     }
     private void LateUpdate() {
         DrawRope();
@@ -64,4 +75,18 @@ public class GrappleGun : MonoBehaviour
     public Vector3 GetGrapplePoint() {
         return grapplePoint;
     }
+
+
+
+
+
+
+
+    void FireBullet() {
+        GameObject spawnBullet = Instantiate(bullet);
+        spawnBullet.transform.position = gunTip.position;
+        spawnBullet.GetComponent<Rigidbody>().velocity = bulletSpeed*gunTip.forward;
+        Destroy(spawnBullet, 3);
+    }
+
 }
