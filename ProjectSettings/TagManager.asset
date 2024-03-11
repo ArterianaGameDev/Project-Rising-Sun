@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Start
   - Floor
+  - Bult
+  - PickupItem
   layers:
   - Default
   - TransparentFX
