@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class TargetScore : MonoBehaviour
 {
-    public TMPro.TMP_Text ScoreDisplay;
+   // public TMPro.TMP_Text ScoreDisplay;
     static public int Score = 0;
     public GameObject Target;
     
@@ -15,7 +15,7 @@ public class TargetScore : MonoBehaviour
         if(other.gameObject.tag == "Bult") 
         {
          Score += 1;
-        ScoreDisplay.text = "Score: " + Score;      
+       // ScoreDisplay.text = "Score: " + Score;      
         Destroy(other.gameObject);
         Destroy(Target);        
         }
