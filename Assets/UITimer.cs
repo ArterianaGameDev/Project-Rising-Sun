@@ -24,16 +24,17 @@ public class UITimer : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-	if(other.tag == "Start")
-	{
-		Timer = 0;
-		playing = true;
-	}
-	if(other.tag == "Finish")
-		{
-		playing = false;
-		transform.position = Spawnpoint.position;
-		}
+	 if(other.tag == "Start")
+	 {
+	 	Timer = 0;
+	 	playing = true;
+		Destroy(other.gameObject);
+	 }
+	// if(other.tag == "Finish")
+	// 	{
+	// 	playing = false;
+	// 	transform.position = Spawnpoint.position;
+	// 	}
 	
   }
 

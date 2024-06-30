@@ -8,7 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GameDevLab.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game Tutorial.unity
     guid: 72c727c1dcf574fc6887a0c2747f9462
+  - enabled: 1
+    path: Assets/Scenes/Actual Game/Title Page and Main Menu.unity
+    guid: 0eb8951db38694931b48eb6e4c14c934
+  - enabled: 1
+    path: Assets/Scenes/Actual Game/Level1.unity
+    guid: 408a9801978814bb28dad616b4bc10e2
+  - enabled: 1
+    path: Assets/Scenes/Actual Game/Level2.unity
+    guid: ef4ae89b1813445baa08f1ebb1968900
   m_configObjects: {}
