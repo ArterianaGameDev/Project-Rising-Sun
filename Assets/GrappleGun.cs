@@ -12,9 +12,6 @@ public class GrappleGun : MonoBehaviour
     private SpringJoint joint;
     private Vector3 currentGrapplePosition;
 
-    public GameObject bullet;
-    public float bulletSpeed = 10;
-
 
 
 
@@ -27,9 +24,6 @@ public class GrappleGun : MonoBehaviour
         }
         else if(Input.GetMouseButtonUp(1)) {
             StopGrapple();
-        }
-        else if(Input.GetMouseButtonDown(0)) {
-            FireBullet();
         }
 
     }
@@ -82,11 +76,6 @@ public class GrappleGun : MonoBehaviour
 
 
 
-    void FireBullet() {
-        GameObject spawnBullet = Instantiate(bullet);
-        spawnBullet.transform.position = gunTip.position;
-        spawnBullet.GetComponent<Rigidbody>().velocity = bulletSpeed*gunTip.forward;
-        Destroy(spawnBullet, 3);
-    }
+
 
 }

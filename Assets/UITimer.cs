@@ -30,6 +30,10 @@ public class UITimer : MonoBehaviour
 	 	playing = true;
 		Destroy(other.gameObject);
 	 }
+	if(other.tag == "Finish")
+	 {
+	 	playing = false;
+	 }
 	// if(other.tag == "Finish")
 	// 	{
 	// 	playing = false;
